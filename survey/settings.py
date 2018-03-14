@@ -105,3 +105,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+# не используем try/except/pass , чтобы в случае ошибок в local_settings.py получить исключение
+if os.path.isfile(os.path.join(os.path.dirname(os.path.abspath(__file__)), "local_settings.py")):
+    from .local_settings import *
