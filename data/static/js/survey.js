@@ -16,7 +16,7 @@ var json = {
 					name: "name",
 					type: "text",
 					title: "Привет! Как тебя зовут?",
-					placeHolder: "Вова Пупкин",
+					placeHolder: "Вовочка Пупкин",
 					isRequired: true
 				}
 			]
@@ -60,7 +60,7 @@ survey.onComplete.add(function (result) {
 	var answer = [
 		'И чего ты тут расселся??? Иди работай!',
 		'Ну, ты и жадина! Иди и хорошенько подумай над своим поведением.',
-		'Отлично! Следуй за белым кроликом (admin/admin)...'
+		'Отлично! Следуй за белым кроликом (admin/survey11)...'
 	];
 	var res = !has_money ? 0 : !is_generous ? 1 : 2;
 
