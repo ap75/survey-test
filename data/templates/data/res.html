@@ -1,0 +1,15 @@
+{% extends "data/base.html" %}
+{% load staticfiles %}
+
+{% block headers %}
+	<title>Survey Result</title>
+	<script src="https://unpkg.com/jquery"></script>
+{% endblock %}
+
+{% block content %}
+	<ul>
+		<li><b>Всего опросов:</b> {{ total }}</li>
+		<li><b>С деньгами:</b> {{ has_money }}</li>
+		<li><b>Готовы поделиться:</b> {{ is_generous }}</li>
+	</ul>
+{% endblock %}

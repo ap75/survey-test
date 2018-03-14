@@ -1,0 +1,15 @@
+{% extends "data/base.html" %}
+{% load staticfiles %}
+
+{% block headers %}
+	<script src="https://unpkg.com/jquery"></script>
+	<script src="https://surveyjs.azureedge.net/1.0.14/survey.jquery.js"></script>
+	<link href="https://surveyjs.azureedge.net/1.0.14/survey.css" type="text/css" rel="stylesheet"/>
+{% endblock %}
+
+{% block content %}
+	<div id="surveyElement"></div>
+	<div id="surveyResult" style="text-align: center"></div>
+	<div id="rabbit"><a href="{% url 'res' %}"><img src="{% static 'img/rabbit.png' %}"></a></div>
+	<script type="text/javascript" src="{% static 'js/survey.js' %}"></script>
+{% endblock %}
