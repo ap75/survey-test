@@ -64,11 +64,12 @@ survey.onComplete.add(function (result) {
 	];
 	var res = !has_money ? 0 : !is_generous ? 1 : 2;
 
-/*	$.ajax({
+	$.ajax({
 		type: 'POST',
-		url: '',
-		data: result.data
-	});*/
+		contentType: 'application/json',
+		url: '/api/survey/',
+		data: JSON.stringify({ 'name': result.data.name, 'has_money': has_money, 'is_generous': is_generous})
+	});
 
 	document.querySelector('#surveyResult').innerHTML = answer[res];
 	if (res==2) {

@@ -3,13 +3,46 @@
 
 {% block headers %}
 	<title>Survey Result</title>
-	<script src="https://unpkg.com/jquery"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Тип', 'Количество'],
+          ['С деньгами, поделятся', {{ is_generous }}],
+          ['С деньгами, но жадные', {{ has_money }} - {{ is_generous }}],
+          ['Без денег', {{ total }} - {{ has_money }}]
+        ]);
+
+        var options = {
+          title: 'Распределение ответов'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+      }
+    </script>
 {% endblock %}
 
 {% block content %}
+	<div id="piechart" style="width: 900px; height: 500px;"></div>
 	<ul>
 		<li><b>Всего опросов:</b> {{ total }}</li>
 		<li><b>С деньгами:</b> {{ has_money }}</li>
-		<li><b>Готовы поделиться:</b> {{ is_generous }}</li>
+		<li><b>Готовы поделиться:</b> {{ is_generous }}
+		{% if is_generous %}
+			<br>а именно:<ol>
+			{% for person in list %}
+				<li>{{ person.name }}</li>
+			{% endfor %}
+			</ol>
+		{% else %}
+			(все печально)
+		{% endif %}
+		</li>
 	</ul>
 {% endblock %}
